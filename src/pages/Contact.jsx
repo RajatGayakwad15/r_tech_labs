@@ -38,13 +38,13 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      content: '+91 8379070258',
+      link: 'tel:+8379070258',
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      content: '123 Tech Street, City, State 12345',
+      content: 'Powai, Mumbai',
       link: '#',
     },
   ]

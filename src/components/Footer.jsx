@@ -93,8 +93,8 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-gray-600 dark:text-gray-400">
               <li>Email: info@rtechlabs.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
-              <li>Address: 123 Tech Street, City, State 12345</li>
+              <li>Phone: +91 8379070258</li>
+              <li>Address: Powai, Mumbai</li>
             </ul>
           </div>
         </div>
