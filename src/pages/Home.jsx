@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Code, Smartphone, Cloud, Shield, Zap, Briefcase, User, Lightbulb, Quote, ChevronDown, HelpCircle } from 'lucide-react'
 import profileImage from '../assets/IMG20250608125155.jpg'
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import ScrollReveal from '../components/ScrollReveal'
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -47,58 +49,126 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 to-primary-100 dark:from-gray-900 dark:to-gray-800 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-20 left-10 w-72 h-72 bg-primary-200/30 dark:bg-primary-800/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-primary-300/20 dark:bg-primary-700/20 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              x: [0, -30, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Innovative Software
-              <span className="text-primary-600 dark:text-primary-400 block">
+              <motion.span
+                className="text-primary-600 dark:text-primary-400 block bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Solutions
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+              </motion.span>
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               We build cutting-edge software solutions that drive business
               growth and digital transformation
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/contact" className="btn-primary inline-flex items-center justify-center">
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link to="/services" className="btn-secondary inline-flex items-center justify-center">
-                Our Services
-              </Link>
-            </div>
-          </div>
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/contact" className="btn-primary inline-flex items-center justify-center group">
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to="/services" className="btn-secondary inline-flex items-center justify-center">
+                  Our Services
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Services
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Comprehensive software solutions tailored to your business needs
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Our Services
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Comprehensive software solutions tailored to your business needs
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="card hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="text-primary-600 dark:text-primary-400 mb-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {service.description}
-                </p>
-              </div>
+              <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+                <motion.div
+                  className="card hover:shadow-xl transition-all duration-300 group"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-primary-600 dark:text-primary-400 mb-4"
+                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {service.icon}
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {service.description}
+                  </p>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -137,29 +207,51 @@ const Home = () => {
       </section> */}
 
       {/* Philosophy Section */}
-      <section className={`py-20 bg-gradient-to-br from-primary-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <section className="py-20 bg-gradient-to-br from-primary-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative">
-            {/* Decorative Quote Icon */}
-            <div className="absolute -top-8 -left-8 w-24 h-24 text-primary-200 dark:text-primary-900/30 opacity-50">
-              <Quote className="w-full h-full" />
-            </div>
-            <div className="absolute -bottom-8 -right-8 w-24 h-24 text-primary-200 dark:text-primary-900/30 opacity-50 rotate-180">
-              <Quote className="w-full h-full" />
-            </div>
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="relative">
+              {/* Decorative Quote Icon */}
+              <motion.div
+                className="absolute -top-8 -left-8 w-24 h-24 text-primary-200 dark:text-primary-900/30 opacity-50"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Quote className="w-full h-full" />
+              </motion.div>
+              <motion.div
+                className="absolute -bottom-8 -right-8 w-24 h-24 text-primary-200 dark:text-primary-900/30 opacity-50 rotate-180"
+                animate={{ rotate: [180, 190, 170, 180] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Quote className="w-full h-full" />
+              </motion.div>
 
-            {/* Philosophy Card */}
-            <div className="card relative overflow-hidden border-2 border-primary-200 dark:border-primary-800 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              {/* Philosophy Card */}
+              <motion.div
+                className="card relative overflow-hidden border-2 border-primary-200 dark:border-primary-800"
+                whileHover={{ y: -8, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
               {/* Gradient Background Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-transparent dark:from-primary-900/10 pointer-events-none"></div>
               
               <div className="relative p-8 md:p-12">
                 {/* Quote Icon */}
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg">
+                <motion.div
+                  className="flex justify-center mb-6"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+                >
+                  <motion.div
+                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <Quote className="w-8 h-8 text-white" />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 {/* Philosophy Text */}
                 <blockquote className="text-center mb-8">
@@ -189,10 +281,34 @@ const Home = () => {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute top-0 left-0 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-3xl -translate-x-16 -translate-y-16"></div>
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-3xl translate-x-16 translate-y-16"></div>
-            </div>
+              <motion.div
+                className="absolute top-0 left-0 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-3xl -translate-x-16 -translate-y-16"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute bottom-0 right-0 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-3xl translate-x-16 translate-y-16"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+              />
+            </motion.div>
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -288,19 +404,25 @@ const Home = () => {
       </section> */}
 
       {/* FAQs Section */}
-      <section className={`py-20 bg-white dark:bg-gray-900 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full mb-4">
-              <HelpCircle className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12">
+              <motion.div
+                className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full mb-4"
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <HelpCircle className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+              </motion.div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Find answers to common questions about our services and processes
+              </p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Find answers to common questions about our services and processes
-            </p>
-          </div>
+          </ScrollReveal>
 
           <div className="space-y-4">
             {[
@@ -337,72 +459,128 @@ const Home = () => {
                 answer: 'Getting started is easy! Simply contact us through our contact form or email. We\'ll schedule a consultation to understand your requirements, discuss your vision, and provide a detailed proposal. Once approved, we\'ll kick off the project immediately.',
               },
             ].map((faq, index) => (
-              <div
-                key={index}
-                className="card overflow-hidden transition-all duration-300 hover:shadow-lg"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
+              <ScrollReveal key={index} direction="up" delay={index * 0.05}>
+                <motion.div
+                  className="card overflow-hidden"
+                  whileHover={{ scale: 1.01, y: -4 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white pr-8 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    {faq.question}
-                  </h3>
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center transition-all duration-300 ${openFaq === index ? 'bg-primary-600 dark:bg-primary-700 rotate-180' : ''}`}>
-                    <ChevronDown className={`w-5 h-5 transition-colors duration-300 ${openFaq === index ? 'text-white' : 'text-primary-600 dark:text-primary-400'}`} />
-                  </div>
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className="px-6 pb-6">
-                    <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                        {faq.answer}
-                      </p>
+                  <motion.button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
+                    whileHover={{ x: 4 }}
+                  >
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white pr-8 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                      {faq.question}
+                    </h3>
+                    <motion.div
+                      className={`flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center ${openFaq === index ? 'bg-primary-600 dark:bg-primary-700' : ''}`}
+                      animate={{
+                        rotate: openFaq === index ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronDown className={`w-5 h-5 transition-colors duration-300 ${openFaq === index ? 'text-white' : 'text-primary-600 dark:text-primary-400'}`} />
+                    </motion.div>
+                  </motion.button>
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openFaq === index ? 'auto' : 0,
+                      opacity: openFaq === index ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6">
+                      <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
 
           {/* Still have questions CTA */}
-          <div className="mt-12 text-center">
-            <div className="card bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 border-2 border-primary-200 dark:border-primary-800">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                Still have questions?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                We're here to help! Get in touch with our team.
-              </p>
-              <Link
-                to="/contact"
-                className="btn-primary inline-flex items-center justify-center group/btn hover:scale-105 transition-all duration-300"
+          <ScrollReveal direction="up" delay={0.4}>
+            <div className="mt-12 text-center">
+              <motion.div
+                className="card bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 border-2 border-primary-200 dark:border-primary-800"
+                whileHover={{ scale: 1.02, y: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                Contact Us
-                <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-              </Link>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  Still have questions?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  We're here to help! Get in touch with our team.
+                </p>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to="/contact"
+                    className="btn-primary inline-flex items-center justify-center group/btn"
+                  >
+                    Contact Us
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </motion.div>
+              </motion.div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600 dark:bg-primary-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help transform your business with
-            innovative software solutions
-          </p>
-          <Link to="/contact" className="btn-secondary bg-white text-primary-600 hover:bg-gray-100">
-            Contact Us Today
-          </Link>
+      <section className="py-20 bg-primary-600 dark:bg-primary-800 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-700/20 to-primary-500/20"
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <ScrollReveal direction="up" delay={0}>
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-white mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Ready to Start Your Project?
+            </motion.h2>
+            <motion.p
+              className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Let's discuss how we can help transform your business with
+              innovative software solutions
+            </motion.p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link to="/contact" className="btn-secondary bg-white text-primary-600 hover:bg-gray-100 inline-flex items-center">
+                Contact Us Today
+              </Link>
+            </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

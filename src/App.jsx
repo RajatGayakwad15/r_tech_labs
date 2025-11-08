@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import AdminLayout from './layouts/AdminLayout'
+import { AnimatePresence } from 'framer-motion'
+import AnimatedPage from './components/AnimatedPage'
 
 // Public Pages
 import Home from './pages/Home'
@@ -22,7 +24,9 @@ const PublicLayout = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1">
-        <Outlet />
+        <AnimatedPage>
+          <Outlet />
+        </AnimatedPage>
       </main>
       <Footer />
     </div>
@@ -33,25 +37,35 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="projects" element={<AdminProjects />} />
-            <Route path="clients" element={<AdminClients />} />
-            <Route path="settings" element={<AdminSettings />} />
-          </Route>
-        </Routes>
+        <AppRoutes />
       </Router>
     </ThemeProvider>
+  )
+}
+
+function AppRoutes() {
+  const location = useLocation()
+  
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* Public Routes */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="clients" element={<AdminClients />} />
+          <Route path="settings" element={<AdminSettings />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   )
 }
 

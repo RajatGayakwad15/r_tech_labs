@@ -1,6 +1,8 @@
 import { Users, Target, Award, Heart, Linkedin, Mail, Briefcase, Code, Lightbulb, Zap, Rocket, TrendingUp } from 'lucide-react'
 import profileImage from '../assets/IMG20250608125155.jpg'
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import ScrollReveal from '../components/ScrollReveal'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -54,19 +56,31 @@ const About = () => {
     <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-            About R Tech Labs
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            We are a leading software development company dedicated to
-            delivering innovative solutions that drive business success
-          </p>
-        </div>
+        <ScrollReveal direction="up" delay={0}>
+          <div className="text-center mb-16">
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              About R Tech Labs
+            </motion.h1>
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We are a leading software development company dedicated to
+              delivering innovative solutions that drive business success
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Story Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="card max-w-4xl mx-auto hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="mb-20">
+            <motion.div
+              className="card max-w-4xl mx-auto"
+              whileHover={{ y: -8, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
               <Rocket className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
               Our Story
@@ -90,37 +104,58 @@ const About = () => {
                 quality, innovation, and client success drives everything we do.
               </p>
             </div>
+            </motion.div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Founder Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Meet Our Founder
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Visionary leader driving innovation and excellence in software development
-            </p>
-          </div>
-          
-          <div className="max-w-5xl mx-auto">
-            <div className="card overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Meet Our Founder
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Visionary leader driving innovation and excellence in software development
+              </p>
+            </div>
+            
+            <div className="max-w-5xl mx-auto">
+              <motion.div
+                className="card overflow-hidden"
+                whileHover={{ y: -8, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Founder Image/Profile */}
                 <div className="lg:col-span-1 flex flex-col items-center lg:items-start">
-                  <div className="relative mb-6 group">
-                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-xl ring-4 ring-primary-200 dark:ring-primary-800 transition-transform duration-300 group-hover:scale-105 group-hover:ring-primary-400 dark:group-hover:ring-primary-600">
-                      <img
+                  <motion.div
+                    className="relative mb-6 group"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <motion.div
+                      className="w-48 h-48 rounded-2xl overflow-hidden shadow-xl ring-4 ring-primary-200 dark:ring-primary-800"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <motion.img
                         src={profileImage}
                         alt="Rajat Gayakwad - Founder & CEO"
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
                       />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-primary-600 dark:bg-primary-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-900 animate-pulse">
+                    </motion.div>
+                    <motion.div
+                      className="absolute -bottom-2 -right-2 w-16 h-16 bg-primary-600 dark:bg-primary-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-900"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
                       <Briefcase className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     Rajat Gayakwad
                   </h3>
@@ -210,105 +245,138 @@ const About = () => {
                   </div> */}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Skills Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Skills & Expertise
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Technologies and tools we master to deliver exceptional solutions
-            </p>
+        <ScrollReveal direction="up" delay={0.4}>
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Our Skills & Expertise
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Technologies and tools we master to deliver exceptional solutions
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {skills.map((skill, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+                  <motion.div
+                    className="card"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        {skill.name}
+                      </h3>
+                      <span className="text-sm font-bold text-primary-600 dark:text-primary-400">
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                      <motion.div
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
+                      />
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="card hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {skill.name}
-                  </h3>
-                  <span className="text-sm font-bold text-primary-600 dark:text-primary-400">
-                    {skill.level}%
-                  </span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
-                  <div
-                    className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                    style={{
-                      width: isVisible ? `${skill.level}%` : '0%',
-                      transitionDelay: `${index * 100}ms`,
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        </ScrollReveal>
 
         {/* Projects Stats Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Projects
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Diverse range of successful projects across different domains
-            </p>
+        <ScrollReveal direction="up" delay={0.5}>
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Our Projects
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Diverse range of successful projects across different domains
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {projects.map((project, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+                  <motion.div
+                    className="card text-center group"
+                    whileHover={{ y: -8, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="text-primary-600 dark:text-primary-400 mb-4 flex justify-center"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {project.icon}
+                    </motion.div>
+                    <motion.div
+                      className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent mb-2"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, delay: index * 0.1 }}
+                    >
+                      {project.count}+
+                    </motion.div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {project.name}
+                    </h3>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="card text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-105 group"
-              >
-                <div className="text-primary-600 dark:text-primary-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                  {project.icon}
-                </div>
-                <div className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent mb-2">
-                  {project.count}+
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  {project.name}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
+        </ScrollReveal>
 
         {/* Values Section */}
-        <div className={`mb-20 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">
-            Our Values
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="card text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
-              >
-                <div className="text-primary-600 dark:text-primary-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {value.description}
-                </p>
-              </div>
-            ))}
+        <ScrollReveal direction="up" delay={0.6}>
+          <div className="mb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">
+              Our Values
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+                  <motion.div
+                    className="card text-center group"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className="text-primary-600 dark:text-primary-400 mb-4 flex justify-center"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {value.icon}
+                    </motion.div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {value.description}
+                    </p>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Team Section */}
-        <div className={`card max-w-4xl mx-auto hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <ScrollReveal direction="up" delay={0.7}>
+          <motion.div
+            className="card max-w-4xl mx-auto"
+            whileHover={{ y: -8, scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
             <Users className="w-8 h-8 text-primary-600 dark:text-primary-400 mr-3" />
             Our Team
@@ -345,7 +413,8 @@ const About = () => {
               </h3>
             </div>
           </div>
-        </div>
+        </motion.div>
+        </ScrollReveal>
       </div>
     </div>
   )
