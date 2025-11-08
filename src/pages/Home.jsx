@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Code, Smartphone, Cloud, Shield, Zap, Briefcase, User, Lightbulb, Quote, ChevronDown, HelpCircle } from 'lucide-react'
+import { ArrowRight, Code, Smartphone, Cloud, Shield, Zap, Briefcase, User, Lightbulb, Quote, ChevronDown, HelpCircle, Database, Cpu, GitBranch, Terminal, Layers, Server } from 'lucide-react'
 import profileImage from '../assets/IMG20250608125155.jpg'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -80,56 +80,258 @@ const Home = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <motion.div
+              className="text-center lg:text-left"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              Innovative Software
-              <motion.span
-                className="text-primary-600 dark:text-primary-400 block bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+              <motion.h1
+                className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Innovative Software
+                <motion.span
+                  className="text-primary-600 dark:text-primary-400 block bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  Solutions
+                </motion.span>
+              </motion.h1>
+              <motion.p
+                className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Solutions
-              </motion.span>
-            </motion.h1>
-            <motion.p
-              className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              We build cutting-edge software solutions that drive business
-              growth and digital transformation
-            </motion.p>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/contact" className="btn-primary inline-flex items-center justify-center group">
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/services" className="btn-secondary inline-flex items-center justify-center">
-                  Our Services
-                </Link>
+                We build cutting-edge software solutions that drive business
+                growth and digital transformation
+              </motion.p>
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link to="/contact" className="btn-primary inline-flex items-center justify-center group">
+                    Get Started
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link to="/services" className="btn-secondary inline-flex items-center justify-center">
+                    Our Services
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Animated Software Development Illustration */}
+            <motion.div
+              className="relative mt-8 lg:mt-0"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-96">
+                {/* Animated Code Blocks */}
+                <motion.div
+                  className="absolute top-0 left-0 w-48 sm:w-56 md:w-64 h-36 sm:h-40 md:h-48 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-3 sm:p-4"
+                  animate={{
+                    y: [0, -10, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2 font-mono text-xs sm:text-sm">
+                    <motion.div
+                      className="flex items-center gap-1 sm:gap-2 flex-wrap"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 }}
+                    >
+                      <span className="text-blue-500">const</span>
+                      <span className="text-gray-700 dark:text-gray-300">app</span>
+                      <span className="text-gray-500">=</span>
+                      <span className="text-purple-500">createApp</span>
+                      <span className="text-gray-500">();</span>
+                    </motion.div>
+                    <motion.div
+                      className="flex items-center gap-1 sm:gap-2 flex-wrap"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 1 }}
+                    >
+                      <span className="text-blue-500">app</span>
+                      <span className="text-gray-500">.</span>
+                      <span className="text-yellow-500">use</span>
+                      <span className="text-gray-500">(</span>
+                      <span className="text-green-500">express</span>
+                      <span className="text-gray-500">());</span>
+                    </motion.div>
+                    <motion.div
+                      className="flex items-center gap-1 sm:gap-2 flex-wrap"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 1.2 }}
+                    >
+                      <span className="text-blue-500">app</span>
+                      <span className="text-gray-500">.</span>
+                      <span className="text-yellow-500">listen</span>
+                      <span className="text-gray-500">(</span>
+                      <span className="text-orange-500">3000</span>
+                      <span className="text-gray-500">);</span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Animated Server/Cloud Icon */}
+                <motion.div
+                  className="absolute top-20 sm:top-24 md:top-32 right-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl shadow-2xl flex items-center justify-center"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Cloud className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 text-white" />
+                  </motion.div>
+                </motion.div>
+
+                {/* Animated Mobile Device */}
+                <motion.div
+                  className="absolute bottom-0 left-4 sm:left-8 w-24 h-36 sm:w-28 sm:h-40 md:w-32 md:h-48 bg-gray-900 dark:bg-gray-700 rounded-2xl shadow-2xl p-1.5 sm:p-2"
+                  animate={{
+                    y: [0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center">
+                    <Smartphone className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-white" />
+                  </div>
+                </motion.div>
+
+                {/* Animated Database Icon */}
+                <motion.div
+                  className="absolute top-0 right-8 sm:right-12 md:right-16 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-xl flex items-center justify-center"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.2,
+                  }}
+                >
+                  <Database className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" />
+                </motion.div>
+
+                {/* Animated Server Icon */}
+                <motion.div
+                  className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-4 sm:right-8 md:right-12 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg shadow-xl flex items-center justify-center"
+                  animate={{
+                    y: [0, -8, 0],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.4,
+                  }}
+                >
+                  <Server className="w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" />
+                </motion.div>
+
+                {/* Floating Code Elements */}
+                {[
+                  { icon: Code, x: '10%', y: '50%', delay: 0, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                  { icon: Zap, x: '65%', y: '15%', delay: 0.3, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                  { icon: Shield, x: '75%', y: '65%', delay: 0.6, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                  { icon: Terminal, x: '5%', y: '75%', delay: 0.9, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                  { icon: GitBranch, x: '85%', y: '50%', delay: 1.2, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                  { icon: Cpu, x: '50%', y: '5%', delay: 1.5, size: 'w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12' },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className={`absolute ${item.size} bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center shadow-lg`}
+                    style={{
+                      left: item.x,
+                      top: item.y,
+                    }}
+                    animate={{
+                      y: [0, -15, 0],
+                      rotate: [0, 10, -10, 0],
+                    }}
+                    transition={{
+                      duration: 3 + index * 0.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: item.delay,
+                    }}
+                  >
+                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary-600 dark:text-primary-400" />
+                  </motion.div>
+                ))}
+
+                {/* Animated Connection Lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: -1 }}>
+                  <motion.path
+                    d="M 100 100 Q 200 150 300 200"
+                    stroke="url(#gradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="5,5"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 0.3 }}
+                    transition={{ duration: 2, delay: 1 }}
+                  />
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#0284c7" stopOpacity="0.5" />
+                      <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.5" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
